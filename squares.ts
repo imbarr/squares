@@ -14,6 +14,7 @@ function square(e: Element): Element {
     return square;
 }
 
+
 function toPx(n: number): string {
     return Math.floor(n) + "px"
 }
