@@ -18,14 +18,32 @@ function move(e, dx, dy) {
     e.style.top = toPx(fromPx(e.style.top) + dy);
     return e;
 }
-// function fly(e: HTMLElement, vx: number, vy: number, interval: number): HTMLElement {
-//     setInterval(() => {
-//
-//     });
-//     return e;
-// }
+function fly(parent, e, vx, vy, interval) {
+    setInterval(function () {
+        var mx = parent.scrollWidth - e.scrollWidth;
+        var my = parent.scrollHeight - e.scrollHeight;
+        move(e, vx, vy);
+        if (fromPx(e.style.left) < 0) {
+            e.style.left = toPx(0);
+            vx = -vx;
+        }
+        else if (fromPx(e.style.left) > mx) {
+            e.style.left = toPx(mx);
+            vx = -vx;
+        }
+        else if (fromPx(e.style.top) < 0) {
+            e.style.top = toPx(0);
+            vy = -vy;
+        }
+        else if (fromPx(e.style.top) > my) {
+            e.style.top = toPx(my);
+            vy = -vy;
+        }
+    }, interval);
+    return e;
+}
 function toPx(n) {
-    return (n > 0 ? Math.floor(n): Math.ceil(n)) + "px";
+    return Math.floor(n) + "px";
 }
 function fromPx(s) {
     return parseInt(s.substring(0, s.length - 2));

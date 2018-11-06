@@ -9,12 +9,8 @@
             let s = square(document.body);
             s.style.backgroundColor = randomColor();
             document.body.appendChild(s);
-            setInterval(() => {
-                let dx = (Math.random() - 0.5) * 5;
-                let dy = (Math.random() - 0.5) * 5;
-                move(s, dx, dy);
-                }, 100
-            );
+            let r = () => Math.floor((Math.random() - 0.5) * 20);
+            fly(document.body, s, r(), r(), 20);
         }
     </script>
     <title>Title</title>
