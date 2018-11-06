@@ -13,8 +13,22 @@ function square(e) {
         Math.floor(e.scrollWidth * e.scrollHeight - width * height).toString();
     return square;
 }
+function move(e, dx, dy) {
+    e.style.left = toPx(fromPx(e.style.left) + dx);
+    e.style.top = toPx(fromPx(e.style.top) + dy);
+    return e;
+}
+// function fly(e: HTMLElement, vx: number, vy: number, interval: number): HTMLElement {
+//     setInterval(() => {
+//
+//     });
+//     return e;
+// }
 function toPx(n) {
-    return Math.floor(n) + "px";
+    return (n > 0 ? Math.floor(n): Math.ceil(n)) + "px";
+}
+function fromPx(s) {
+    return parseInt(s.substring(0, s.length - 2));
 }
 function randomColor() {
     var rand = function () { return Math.floor(Math.random() * 255).toString(); };

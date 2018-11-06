@@ -14,9 +14,25 @@ function square(e: Element): Element {
     return square;
 }
 
+function move(e: HTMLElement, dx: number, dy: number): HTMLElement {
+    e.style.left = toPx(fromPx(e.style.left) + dx);
+    e.style.top = toPx(fromPx(e.style.top) + dy);
+    return e;
+}
+
+// function fly(e: HTMLElement, vx: number, vy: number, interval: number): HTMLElement {
+//     setInterval(() => {
+//
+//     });
+//     return e;
+// }
 
 function toPx(n: number): string {
     return Math.floor(n) + "px"
+}
+
+function fromPx(s: string): number {
+    return parseInt(s.substring(0, s.length - 2))
 }
 
 function randomColor(): string {
